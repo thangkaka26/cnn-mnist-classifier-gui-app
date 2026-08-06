@@ -4,7 +4,6 @@ sys.dont_write_bytecode = True
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from tensorflow.keras.models import load_model
 from PIL import Image
 from pathlib import Path
@@ -50,8 +49,18 @@ class CNN_MNIST_Classifier:
         try:
             img_mtx = self._img_to_mtx()
             plt.figure(figsize=(5, 5))
-            plt.title(f"CNN's Result: {self._pred_result()}")
-            sns.heatmap(img_mtx[0].squeeze(), xticklabels=False, yticklabels=False, cbar=False, vmin=0, vmax=255, cmap='binary_r')
+            plt.title(
+                f"CNN's result: {self._pred_result()}",
+                y=-0.1, # reposition the title to the bottom
+                fontdict={'family':'monospace', 'size':18, 'weight':'bold'}
+                )
+            plt.imshow(
+                img_mtx[0].squeeze(),
+                cmap='binary_r',
+                vmin=0, vmax=255
+                )
+            plt.xticks([])
+            plt.yticks([])
             plt.show()
         except:
             plt.close()
