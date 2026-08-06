@@ -1,7 +1,7 @@
 # CNN MNIST CLASSIFIER
 
 ## About
-**This a application that uses convolutional neural network to classify MNIST images, with simple interactive UI.**
+**This is an application that uses convolutional neural network to classify MNIST images, with simple interactive UI.**
 - Model Architecture: see in [Notebook](https://github.com/thangkaka26/cnn-mnist-classifier/blob/main/archived/training.ipynb)
 - Training Dataset: [TrainingSet](https://github.com/thangkaka26/cnn-mnist-classifier/tree/main/archived/data/trainingSet/trainingSet)
 - Dataset Source: [Kaggle](https://www.kaggle.com/datasets/scolianni/mnistasjpg)
