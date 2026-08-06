@@ -7,11 +7,11 @@
 - Dataset Source: [Kaggle](https://www.kaggle.com/datasets/scolianni/mnistasjpg)
 
 ## Installation
-- Download and open the [executable file](https://github.com//thangkaka26/cnn-mnist-classifier/releases/download/v1.0.0/classifer.exe).
+- Download the executable file (.exe) in [releases](https://github.com/thangkaka26/cnn-mnist-classifier/releases).
+- Optional: download the sample images for quick testing.
 
 ## Usage
-- Open the [executable file](https://github.com//thangkaka26/cnn-mnist-classifier/releases/download/v1.0.0/classifer.exe) the you know how to use.  
-- Sample images for testing: [testSample](https://github.com/thangkaka26/cnn-mnist-classifier/tree/main/archived/data/testSample/testSample).
+- Open the executable file (.exe) then you know how to use.  
 
 ## Notes
 - The application might not open immediately as the executable file size is not small (over 300 MB).
