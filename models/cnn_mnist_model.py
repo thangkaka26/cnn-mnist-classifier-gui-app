@@ -4,6 +4,7 @@ sys.dont_write_bytecode = True
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from tensorflow.nn import softmax
 from tensorflow.keras.models import load_model
 from PIL import Image
 from pathlib import Path
@@ -38,20 +39,38 @@ class CNN_MNIST_Classifier:
         except:
             return None
 
-    def _pred_result(self):
+    def _cnn_result(self):
         mtx = self._img_to_mtx()
-        prob = self.__cnn_model.predict(mtx, verbose=0)
-        pred = np.argmax(prob, axis=1)[0]
+        probs = self.__cnn_model.predict(mtx, verbose=0)
+        pred = np.argmax(probs, axis=1)[0]
         
-        return pred
+        return pred, probs
+
+    def _postprocess_result(self):
+        pred, probs = self._cnn_result()
+        probs = (softmax(probs[0]).numpy().astype('float32') * 100).tolist()
+        prob_dict = {}
+
+        for i in range(10):
+            prob_dict[str(i)] = round(probs[i], 2)
+
+        items = list(prob_dict.items())
+        midpoint = len(prob_dict) // 2
+        
+        prob_pt1 = dict(items[:midpoint])
+        prob_pt2 = dict(items[midpoint:])
+
+        return pred, prob_pt1, prob_pt2
+
 
     def show_result(self):
         try:
             img_mtx = self._img_to_mtx()
-            plt.figure(figsize=(5, 5))
+            pred, prob_pt1, prob_pt2 = self._postprocess_result()
+            
+            plt.figure(figsize=(6, 5))
             plt.title(
-                f"CNN's result: {self._pred_result()}",
-                y=-0.1, # reposition the title to the bottom
+                f"CNN's result: {pred}",
                 fontdict={'family':'monospace', 'size':18, 'weight':'bold'}
                 )
             plt.imshow(
@@ -61,6 +80,7 @@ class CNN_MNIST_Classifier:
                 )
             plt.xticks([])
             plt.yticks([])
+            plt.xlabel(f"Probabilities (%)\n{str(prob_pt1)[1:-1]}\n{str(prob_pt2)[1:-1]}", fontdict={'family':'monospace', 'size':10, 'weight':'bold'})
             plt.show()
         except:
             plt.close()
