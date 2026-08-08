@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('saves\\cnn_mnist_classifier.keras', 'saves')],
+    datas=[('saves\\cnn_mnist_classifier.keras', 'saves'), ('ui\\assets\\github_icon.png', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

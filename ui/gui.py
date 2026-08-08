@@ -8,6 +8,15 @@ import webbrowser
 from pathlib import Path
 
 
+def get_resource_path(relative_path: str) -> Path:
+    """Return a Path to a resource, handling PyInstaller's _MEIPASS when frozen."""
+    if getattr(sys, "frozen", False):
+        base_path = Path(sys._MEIPASS)
+    else:
+        base_path = Path(__file__).resolve().parent
+    return base_path / relative_path
+
+
 class GUI:
     def __init__(self):
         self.root = tk.Tk()
@@ -16,7 +25,7 @@ class GUI:
         self.root.resizable(True, True)
 
         self.cnn_model = CNN_MNIST_Classifier()
-        self.src_btn_icon = tk.PhotoImage(file=Path(__file__).parent / "assets" / "github_icon.png")
+        self.src_btn_icon = tk.PhotoImage(file=str(get_resource_path("assets/github_icon.png")))
 
         self.exec_btn = tk.Button(
             self.root,
