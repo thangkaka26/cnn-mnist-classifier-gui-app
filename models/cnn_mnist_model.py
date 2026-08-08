@@ -52,7 +52,7 @@ class CNN_MNIST_Classifier:
         prob_dict = {}
 
         for i in range(10):
-            prob_dict[str(i)] = round(probs[i], 2)
+            prob_dict[str(i)] = round(probs[i], 1)
 
         items = list(prob_dict.items())
         midpoint = len(prob_dict) // 2
@@ -68,7 +68,7 @@ class CNN_MNIST_Classifier:
             img_mtx = self._img_to_mtx()
             pred, prob_pt1, prob_pt2 = self._postprocess_result()
             
-            plt.figure(figsize=(6, 5))
+            plt.figure(figsize=(5, 5))
             plt.title(
                 f"CNN's result: {pred}",
                 fontdict={'family':'monospace', 'size':18, 'weight':'bold'}
