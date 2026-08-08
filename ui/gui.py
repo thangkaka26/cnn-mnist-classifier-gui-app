@@ -4,6 +4,18 @@ sys.dont_write_bytecode = True
 import tkinter as tk
 from tkinter import filedialog
 from models.cnn_mnist_model import CNN_MNIST_Classifier
+import webbrowser
+from pathlib import Path
+
+
+def get_resource_path(relative_path: str) -> Path:
+    """Return a Path to a resource, handling PyInstaller's _MEIPASS when frozen."""
+    if getattr(sys, "frozen", False):
+        base_path = Path(sys._MEIPASS)
+    else:
+        base_path = Path(__file__).resolve().parent
+    return base_path / relative_path
+
 
 class GUI:
     def __init__(self):
@@ -13,6 +25,7 @@ class GUI:
         self.root.resizable(True, True)
 
         self.cnn_model = CNN_MNIST_Classifier()
+        self.src_btn_icon = tk.PhotoImage(file=str(get_resource_path("assets/github_icon.png")))
 
         self.exec_btn = tk.Button(
             self.root,
@@ -21,9 +34,26 @@ class GUI:
             font=("Helvetica", 20, "bold italic"),
             relief='raised',
             activebackground="gray",
+            cursor="hand2",
             bd=5,
             width=20, height=2)
-        self.exec_btn.pack(padx=120, pady=140)
+        self.exec_btn.pack(padx=120, pady=120)
+
+        self.url_btn = tk.Button(
+            self.root,
+            text=" Source",
+            command=lambda:webbrowser.open("https://github.com/thangkaka26/cnn-mnist-classifier"),
+            image=self.src_btn_icon,
+            compound="left",
+            font=("Helvetica", 16, "bold"),
+            activebackground="gray",
+            relief='raised',
+            cursor="hand2",
+            bd=5,
+            width=164, height=64
+        )
+        self.url_btn.image = self.src_btn_icon 
+        self.url_btn.pack(padx=10, pady=0)
 
         self.root.mainloop()
 
