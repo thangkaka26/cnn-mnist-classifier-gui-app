@@ -11,9 +11,11 @@
 - Optional: download the sample images for quick testing.
 
 ## Usage
-- Open the executable file (.exe) then you know how to use.  
+- Open the executable file (.exe) and you know what to do.  
 
 ## Notes
 - The application might not open immediately as the executable file size is not small (over 300 MB).
 - Images resolution must be 28x28 for application to work.
 - Input images can be hand-drawn (Adobe PS, MS Paint, ...).
+
+> im too lazy to write a fancy document !
