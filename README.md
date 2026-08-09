@@ -1,4 +1,9 @@
-# CNN MNIST CLASSIFIER
+# CNN MNIST CLASSIFIER GUI APPLICATION
+
+<p align="center">
+  <img src="img/main_menu.jpg" width="40%">
+  <img src="img/mnist_2.jpeg" width="32%">
+</p>
 
 ## About
 **This is an application that uses convolutional neural network to classify MNIST images, with simple interactive UI.**
@@ -16,6 +21,7 @@
 ## Notes
 - The application might not open immediately as the executable file size is not small (over 300 MB).
 - Images resolution must be 28x28 for application to work.
-- Input images can be hand-drawn (Adobe PS, MS Paint, ...).
-
-> im too lazy to write a fancy document !
+- Input images can be hand-drawn (Adobe PS, MS Paint, ...).  
+  
+> I did this in my free time, no deadline, just a stuff that an unemployed might do.  
+> Im too lazy to write documents, you can check [archived](https://github.com/thangkaka26/cnn-mnist-classifier-gui-app/tree/markdown-screenshots-1/archived).
